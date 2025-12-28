@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="pandoc" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=yes"
+        />
+        <meta name="author" content="Oskar Wickström" />
+        <title>The Monospace Web</title>
+        <link rel="stylesheet" href="src/reset.css" />
+        <link rel="stylesheet" href="src/index.css" />
+        <script type="module">
+            import { Editor } from "https://esm.sh/@tiptap/core";
+            import StarterKit from "https://esm.sh/@tiptap/starter-kit";
+            const editor = new Editor({
+                element: document.querySelector(".element"),
+                extensions: [StarterKit],
+                content: `
+                <p>awesome stuff :) (Monopipe)</p><h1>READ ARTICLES directly to the terminal https://github.com/SerJaimeLannister/monopipe </h1><p>Just press the read from terminal button :)</p><blockquote><ul><li><p>you can even change the link to any <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/nwtgck/piping-server">https://github.com/nwtgck/piping-server</a> that you want</p></li><li><p>Yes you can edit the text in here, come and tryyy (remove the more y's) :)</p></li><li><p>Copy it and paste it here</p></li><li><p>Just run curl ppng.io/defaultish , can change the link to any ppng.io/xyz123 link :)</p></li><li><p>Open source, will have more features in future</p></li><li><p>Uses monospaceweb (<a target="_blank" rel="noopener noreferrer nofollow" href="https://owickstrom.github.io/the-monospace-web/">https://owickstrom.github.io/the-monospace-web/</a>) (which is very beautiful) and tiptap and piping-server</p></li><li><p>Written in vanilla javascript without any frameworks</p></li></ul></blockquote><h1>Star us on github! (and contribute)</h1><p>Use this for completely free, its under the MIT license. It might help you and that's all I want.</p><p>Although giving us credit (even a simple link) can be really helpful ^^ </p><p>I personally would really appreciate it but its not such a big deal :) </p><p>Use it however you feel its not such a big deal </p><p>(&gt;'.')&gt;&lt;('.'&lt;) [online hug] (hope your day is going good!) (<a target="_blank" rel="noopener noreferrer nofollow" href="https://www.asciiart.eu/one-line/faces">https://www.asciiart.eu/one-line/faces</a>)</p><h1>Contact me if you wish to donate </h1><p>Donations will go a long way, create an github issue on my page if you want to donate </p><h1>Spread the word of monopipe now!</h1><p>SIMPLE AND EASY :)</p><p></p><p></p>
+                `,
+            });
+
+            document.querySelector("button").addEventListener("click", () => {
+                sendpiping(editor.getHTML());
+            });
+            function sendpiping(x) {
+                fetch(document.getElementById("myinput").value, {
+                    method: "POST",
+                    body: x,
+                    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+                    allowHTTP1ForStreamingUpload: true,
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <input id="myinput" value="https://ppng.io/monopipe" />
+        <button>Read from terminal!</button>
+        <div class="element"></div>
+        <script src="src/index.js"></script>
+    </body>
+</html>
